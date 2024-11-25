@@ -6,21 +6,14 @@
 --╚═╝     ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝ ╚══╝╚══╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
 
 
-ESX = nil
-QBCore = nil
+ESX, QBCore = nil, nil
 vRP, vRPclient = nil, nil
 
 if Config.Framework == 'esx' then
-    TriggerEvent(Config.FrameworkTriggers.main, function(obj) ESX = obj end)
-    if ESX == nil then
-        ESX = exports[Config.FrameworkTriggers.resource_name]:getSharedObject()
-    end
+    ESX = exports[Config.FrameworkTriggers.resource_name]:getSharedObject()
 
 elseif Config.Framework == 'qbcore' then
-    TriggerEvent(Config.FrameworkTriggers.main, function(obj) QBCore = obj end)
-    if QBCore == nil then
-        QBCore = exports[Config.FrameworkTriggers.resource_name]:GetCoreObject()
-    end
+    QBCore = exports[Config.FrameworkTriggers.resource_name]:GetCoreObject()
 
 elseif Config.Framework == 'vrp' then
     local Proxy = module('vrp', 'lib/Proxy')
